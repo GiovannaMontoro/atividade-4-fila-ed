@@ -1,0 +1,93 @@
+name: Classroom Autograding
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  checks: write
+  actions: read
+  contents: read
+
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Compilacao
+        id: compilacao
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Compilacao
+          command: javac -d bin src/App.java
+          timeout: 10
+          max-score: 2
+
+      - name: Exercicio 01 - Progressao Geometrica
+        id: exercicio_01
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Exercicio 01 - Progressao Geometrica
+          command: bash scripts/grade.sh ex1
+          timeout: 20
+          max-score: 2
+
+      - name: Exercicio 02 - Sequencia Decrescente
+        id: exercicio_02
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Exercicio 02 - Sequencia Decrescente
+          command: bash scripts/grade.sh ex2
+          timeout: 20
+          max-score: 2
+
+      - name: Exercicio 03 - Vetor Dinamico
+        id: exercicio_03
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Exercicio 03 - Vetor Dinamico
+          command: bash scripts/grade.sh ex3
+          timeout: 20
+          max-score: 2
+
+      - name: Exercicio 04 - Sequencia Crescente com Soma
+        id: exercicio_04
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Exercicio 04 - Sequencia Crescente com Soma
+          command: bash scripts/grade.sh ex4
+          timeout: 20
+          max-score: 2
+
+      - name: Exercicio 05 - Matriz com Valores Incrementais
+        id: exercicio_05
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Exercicio 05 - Matriz com Valores Incrementais
+          command: bash scripts/grade.sh ex5
+          timeout: 20
+          max-score: 2
+
+      - name: Exercicio 06 - Operacao entre Matrizes
+        id: exercicio_06
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Exercicio 06 - Operacao entre Matrizes
+          command: bash scripts/grade.sh ex6
+          timeout: 20
+          max-score: 2
+
+      - name: Autograding Reporter
+        uses: classroom-resources/autograding-grading-reporter@v1
+        env:
+          COMPILACAO_RESULTS: "${{steps.compilacao.outputs.result}}"
+          EXERCICIO_01_RESULTS: "${{steps.exercicio_01.outputs.result}}" 
+          EXERCICIO_02_RESULTS: "${{steps.exercicio_02.outputs.result}}"
+          EXERCICIO_03_RESULTS: "${{steps.exercicio_03.outputs.result}}"
+          EXERCICIO_04_RESULTS: "${{steps.exercicio_04.outputs.result}}"
+          EXERCICIO_05_RESULTS: "${{steps.exercicio_05.outputs.result}}"
+          EXERCICIO_06_RESULTS: "${{steps.exercicio_06.outputs.result}}"
+        with:
+          runners: compilacao,exercicio_01,exercicio_02,exercicio_03,exercicio_04,exercicio_05,exercicio_06

@@ -1,0 +1,74 @@
+{
+  "tests": [
+    {
+      "name": "Compilacao",
+      "setup": "",
+      "run": "javac -d bin src/App.java",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 2
+    },
+    {
+      "name": "Exercicio 01 - Pilha com valores fixos",
+      "setup": "",
+      "run": "bash scripts/grade.sh ex1",
+      "input": "",
+      "output": "OK",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 2
+    },
+    {
+      "name": "Exercicio 02 - Pilha de nomes",
+      "setup": "",
+      "run": "bash scripts/grade.sh ex2",
+      "input": "",
+      "output": "OK",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 2
+    },
+    {
+      "name": "Exercicio 03 - Remover 10 numeros da pilha",
+      "setup": "",
+      "run": "bash scripts/grade.sh ex3",
+      "input": "",
+      "output": "OK",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 2
+    },
+    {
+      "name": "Exercicio 04 - Menu interativo de pilha",
+      "setup": "",
+      "run": "bash scripts/grade.sh ex4",
+      "input": "",
+      "output": "OK",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 2
+    },
+    {
+      "name": "Exercicio 05 - Inverter palavra com pilha",
+      "setup": "",
+      "run": "bash scripts/grade.sh ex5",
+      "input": "",
+      "output": "OK",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 2
+    },
+    {
+      "name": "Exercicio 06 - Historico de navegacao",
+      "setup": "",
+      "run": "bash scripts/grade.sh ex6",
+      "input": "",
+      "output": "OK",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 2
+    }
+  ]
+}
